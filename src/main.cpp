@@ -10,7 +10,7 @@ pinMode(1,INPUT);
 //LED1 schaltet ein mit Taster 1 und aus mit Taster 2
 void loop(){
 digitalWrite(14,HIGH);
-while (digitalRead(1)==0){};
+while (digitalRead(1)==1){};
 digitalWrite(14,LOW);
-while (digitalRead(0)==0){};
+while (digitalRead(0)==1){};
 }
