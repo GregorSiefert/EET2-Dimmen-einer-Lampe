@@ -17,7 +17,6 @@ void nulldurchgang();
 
 void setup(){ 
 pinMode(3,OUTPUT);
-pinMode(9,INPUT);
 pinMode(0,INPUT);
 pinMode(1,INPUT);
 attachInterrupt(digitalPinToInterrupt(9),nulldurchgang,RISING);
@@ -26,17 +25,19 @@ attachInterrupt(digitalPinToInterrupt(9),nulldurchgang,RISING);
 void loop(){
   if (digitalRead(1)==1)        //Dunkler
   {
-    zuend_winkel++;
-    if (zuend_winkel>zuend_winkel_max)
+    if (zuend_winkel+1>zuend_winkel_max)
     {
       zuend_winkel = zuend_winkel_max;
+    }else{
+      zuend_winkel++;
     }
   }else if (digitalRead(0)==1)  //Heller
   {
-    zuend_winkel--;
-    if (zuend_winkel<zuend_winkel_min)
+    if (zuend_winkel-1<zuend_winkel_min)
     {
       zuend_winkel = zuend_winkel_min;
+    }else{
+      zuend_winkel--;
     }
   }
 }
