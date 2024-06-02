@@ -2,7 +2,7 @@
 
 int blink_abstand = 1;  //in sekunden
 int frequenz = 50;
-int needed_count = blink_abstand*frequenz;
+int needed_count = blink_abstand*frequenz*2;
 int counter = 0;
 int gateimpuls_micro = 10;
 
