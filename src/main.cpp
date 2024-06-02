@@ -1,27 +1,23 @@
 #include <Arduino.h>
+#include <Math.h>
 
-int blink_abstand = 1;  //in sekunden
-int frequenz = 50;
-int needed_count = blink_abstand*frequenz;
-int counter = 0;
+float zuend_winkel = 30;    //in Grad
+float zuend_zeit_sec = zuend_winkel/(360*50);
+int zuend_zeit_micro = round(zuend_zeit_sec*pow(10,6));
 int gateimpuls_micro = 10;
 
 void setup(){ 
-// Initialisiert Pin 14 (LED1) als output
 pinMode(3,OUTPUT);
 pinMode(6,INPUT);
 }
 
-//LED1 blinkt im Zweisekundentakt
 void loop(){
-  	if (digitalRead(6)==1)
-    {
-      counter++;
-      if (counter%needed_count==0) //Triac für eine Halbschwingung anschalten
-      {
-        digitalWrite(3,HIGH);
-        delayMicroseconds(gateimpuls_micro);
-        digitalWrite(3,LOW);
-      }   
-    }    
+  if (digitalRead(6)==1)
+  {
+    delayMicroseconds(zuend_zeit_micro);
+    digitalWrite(3,HIGH);
+    delayMicroseconds(gateimpuls_micro);
+    digitalWrite(3,LOW);
+    while (digitalRead(6)==1){};    //verhindert wiederholtes einschalten in einer Halbschwingung
+  }
 }
