@@ -7,12 +7,10 @@ int counter = 0;
 int gateimpuls_micro = 10;
 
 void setup(){ 
-// Initialisiert Pin 14 (LED1) als output
 pinMode(3,OUTPUT);
 pinMode(6,INPUT);
 }
 
-//LED1 blinkt im Zweisekundentakt
 void loop(){
   	if (digitalRead(6)==1)
     {
