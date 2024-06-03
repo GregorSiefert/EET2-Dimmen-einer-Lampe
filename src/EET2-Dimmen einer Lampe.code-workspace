@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "EET2-Dimmen einer Lampe",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"cmath": "cpp"
+		}
+	}
+}
